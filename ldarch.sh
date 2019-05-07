@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # DEFAULTS:
-[ -z "$progsfile" ] && progsfile="./programs.csv"
+[ -z "$progsfile" ] && progsfile="https://raw.githubusercontent.com/dechnik/ldarch/master/programs.csv"
 [ -z "$aurhelper" ] && aurhelper="yay"
 
 error() { clear; printf "ERROR:\\n%s\\n" "$1"; exit;}
@@ -104,7 +104,7 @@ gitmanualinstall() {
 	}
 
 installationloop() { \
-	([ -f "$progsfile" ] && cp "$progsfile" /tmp/progs.csv) || error "Error copying programs list file."
+    ([ -f "$progsfile" ] && cp "$progsfile" /tmp/progs.csv) || curl -Ls "$progsfile"
 	total=$(wc -l < /tmp/progs.csv)
 	aurinstalled=$(pacman -Qm | awk '{print $1}')
 	while IFS=, read -r tag program comment; do
