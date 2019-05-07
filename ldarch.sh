@@ -18,7 +18,7 @@ getuserandpass() { \
 		unset pass2
 		pass1=$(dialog --no-cancel --passwordbox "Passwords do not match.\\n\\nEnter password again." 10 60 3>&1 1>&2 2>&3 3>&1)
 		pass2=$(dialog --no-cancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
-    done ;}
+    	done ;}
 
 adduserandpass() { \
 	# Adds user `$name` with password $pass1.
@@ -39,7 +39,7 @@ newperms() { # Set special sudoers settings for install (or after).
 
 manualinstall() { # Installs $1 manually if not installed. Used only for AUR helper here.
 	[ -f "/usr/bin/$1" ] || (
-    dialog --infobox "Installing \"$1\", an AUR helper and dependencies (probably GO)" 4 50
+    	dialog --infobox "Installing \"$1\", an AUR helper and dependencies (probably GO)" 4 50
 	cd /tmp || exit
 	rm -rf /tmp/"$1"*
 	curl -sO https://aur.archlinux.org/cgit/aur.git/snapshot/"$1".tar.gz &&
@@ -89,7 +89,7 @@ gitmakeinstall() {
 	cd "$dir" || exit
 	make >/dev/null 2>&1
 	make install >/dev/null 2>&1
-    cd /tmp || return ;}
+    	cd /tmp || return ;}
 
 gitmanualinstall() {
 	case "$1" in
@@ -100,7 +100,7 @@ gitmanualinstall() {
 			cd "$dir" || exit
 			./install.sh >/dev/null 2>&1
 			;;
-    esac
+    	esac
 	}
 
 installationloop() { \
@@ -114,7 +114,7 @@ installationloop() { \
 			"") maininstall "$program" "$comment" ;;
 			"A") aurinstall "$program" "$comment" ;;
 			"S") gitsucklessinstall "$program" "$comment" ;;
-            "G") gitmakeinstall "$program" "$comment" ;;
+            		"G") gitmakeinstall "$program" "$comment" ;;
 			"P") pipinstall "$program" "$comment" ;;
 			"O") goinstall "$program" "$comment" ;;
 			"M") gitmanualinstall "$program" "$comment" ;;
