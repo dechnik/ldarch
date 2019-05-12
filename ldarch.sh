@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # DEFAULTS:
+[ -z "$dotfilesrepo" ] && dotfilesrepo="https://github.com/dechnik/dotfiles.git"
 [ -z "$progsfile" ] && progsfile="https://raw.githubusercontent.com/dechnik/ldarch/master/programs.csv"
 [ -z "$aurhelper" ] && aurhelper="yay"
 
@@ -121,6 +122,15 @@ installationloop() { \
 		esac
 	done < /tmp/progs.csv ;}
 
+installdotfiles() {
+	dialog --infobox "Downloading and installing config files..." 6 70
+	[ ! -d "$2" ] && mkdir -p "$2" && chown -R "$name:wheel" "$2"
+	chown -R "$name:wheel" "$2"
+	sudo -u "$name" git clone "$1" "$2" >/dev/null 2>&1 &&
+    cd "$2" &&
+    sudo -u "$name" sh letsstow.sh -t /home/"$name"
+    cd /tmp || return ;}
+
 systembeepoff() { dialog --infobox "Getting rid of that retarded error beep sound..." 10 50
 	rmmod pcspkr
 	echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf ;}
@@ -152,6 +162,8 @@ sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
 manualinstall $aurhelper || error "Failed to install AUR helper."
 
 installationloop
+
+installdotfiles $dotfilesrepo /home/"$name"/dotfiles
 
 systembeepoff
 
