@@ -1,3 +1,4 @@
+TAG,NAME,DESCRIPTION
 ,xorg-server,"X Graphical server"
 ,xorg-xwininfo,"Command-line utility to print information about windows on an X server"
 ,xorg-xinit,"X.Org initialisation program"
@@ -7,6 +8,7 @@
 ,neovim,"Fork of Vim aiming to improve user experience, plugins, and GUIs"
 ,fzf,"Command-line fuzzy finder"
 ,git,"the fast distributed version control system"
+,stow,"Manage installation of multiple softwares in the same directory tree"
 ,ed,"A POSIX-compliant line-oriented text editor"
 ,dunst,"Customizable and lightweight notification-daemon"
 ,firefox,"Standalone web browser from mozilla.org"
