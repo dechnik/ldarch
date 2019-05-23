@@ -17,6 +17,8 @@ TAG,NAME,DESCRIPTION
 ,qutebrowser,"A keyboard-driven, vim-like browser based on PyQt5"
 ,scrot,"Simple command-line screenshot utility for X"
 ,neomutt,"a version of mutt with added features"
+,freerdp,"Free RDP client"
+,firefox,"Standalone web browser from mozilla.org"
 ,isync,"IMAP and MailDir mailbox synchronizer"
 ,notmuch,"Notmuch is not much of an email program"
 ,ncmpcpp,"Almost exact clone of ncmpc with some new features"
