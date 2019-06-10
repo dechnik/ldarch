@@ -1,0 +1,14 @@
+stages:
+  - deploy
+
+variables:
+  AWS_DEFAULT_REGION: eu-west-1
+  BUCKET_NAME: dechnik.net
+
+deploys3:
+  image: "python:latest"
+  stage: deploy
+  before_script:
+    - pip install awscli
+  script:
+    aws s3 cp ldarch.sh programs.csv s3://${BUCKET_NAME}
