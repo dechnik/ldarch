@@ -11,4 +11,5 @@ deploys3:
   before_script:
     - pip install awscli
   script:
-    aws s3 cp ldarch.sh programs.csv s3://${BUCKET_NAME}
+    aws s3 cp ldarch.sh s3://${BUCKET_NAME}
+    aws s3 cp programs.csv s3://${BUCKET_NAME}
